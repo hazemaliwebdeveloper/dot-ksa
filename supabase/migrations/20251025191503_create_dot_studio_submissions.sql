@@ -109,6 +109,9 @@ CREATE INDEX IF NOT EXISTS idx_submissions_created_at ON submissions(created_at 
 CREATE INDEX IF NOT EXISTS idx_submissions_whatsapp ON submissions(whatsapp);
 CREATE INDEX IF NOT EXISTS idx_submissions_email ON submissions(email);
 
+GRANT INSERT ON submissions TO anon;
+GRANT SELECT, UPDATE, DELETE ON submissions TO authenticated;
+
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$

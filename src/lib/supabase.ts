@@ -34,12 +34,9 @@ export interface FormSubmission {
 }
 
 export const submitForm = async (data: FormSubmission) => {
-  const { data: result, error } = await supabase
+  const { error } = await supabase
     .from('submissions')
-    .insert([data])
-    .select()
-    .maybeSingle();
+    .insert([data]);
 
   if (error) throw error;
-  return result;
 };
